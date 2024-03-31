@@ -1,6 +1,6 @@
 # run `make all` to compile the .hhk and .bin file, use `make` to compile only the .bin file.
 # The .hhk file is the original format, the bin file is a newer format.
-APP_NAME:=STDLibTest
+APP_NAME:=PicoC
 
 ifndef SDK_DIR
 $(error You need to define the SDK_DIR environment variable, and point it to the sdk/ folder)
@@ -9,7 +9,8 @@ endif
 AS:=sh4aeb-elf-gcc
 AS_FLAGS:=-DAPPNAME_STRING=\"$(APP_NAME)\"
 
-COMMON_FLAGS:=-flto -ffunction-sections -fdata-sections -ffreestanding -fshort-wchar -O2 -m4a-nofpu -DAPPNAME_STRING=\"$(APP_NAME)\"
+COMMON_FLAGS:=-flto -ffunction-sections -fdata-sections -ffreestanding -fshort-wchar -O2 -m4a-nofpu -DAPPNAME_STRING=\"$(APP_NAME)\" -DUSE_MALLOC_STACK
+# add tis to debug :  -DDEBUG_EXPRESSIONS -DDEBUG_LEXER
 INCLUDES:=-I $(SDK_DIR)/include/
 WARNINGS:=-Wall -Wextra
 
@@ -17,7 +18,7 @@ CC:=sh4aeb-elf-gcc
 CC_FLAGS:=$(COMMON_FLAGS) $(INCLUDES) $(WARNINGS)
 
 CXX:=sh4aeb-elf-g++
-CXX_FLAGS:=-fno-exceptions -fno-rtti -Wno-write-strings $(COMMON_FLAGS) $(INCLUDES) $(WARNINGS)
+CXX_FLAGS:=-fno-exceptions -fno-rtti -Wno-write-strings $(COMMON_FLAGS) $(INCLUDES) $(WARNINGS) -fpermissive
 
 LD:=sh4aeb-elf-g++
 LD_FLAGS:=-m4a-nofpu -Wl,--gc-sections -Wno-undef
