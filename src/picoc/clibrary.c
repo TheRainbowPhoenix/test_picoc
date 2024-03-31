@@ -126,7 +126,8 @@ void SPutc(unsigned char Ch, union OutputStreamInfo *Stream)
 /* print a character to a stream without using printf/sprintf */
 void PrintCh(char OutCh, struct OutputStream *Stream)
 {
-    (*Stream->Putch)(OutCh, &Stream->i);
+    putchar(OutCh);
+    // (*Stream->Putch)(OutCh, &Stream->i);
 }
 
 /* print a string to a stream without using printf/sprintf */
@@ -249,7 +250,7 @@ void GenericPrintf(struct ParseState *Parser, struct Value *ReturnValue, struct 
     // TODO: Format = printf format-nerfed bc bugs
     fputs(Format, stdout);
 
-    if (FALSE) { // TODO
+    if (FALSE) { // TODO: crash in there - WHY ?
     
     for (FPos = Format; *FPos != '\0'; FPos++)
     {

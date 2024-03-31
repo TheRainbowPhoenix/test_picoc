@@ -74,8 +74,6 @@ extern "C" int __attribute__((section(".bootstrap.text"))) main(void) {
   //     return PicocExitValue;
   // }
 
-  // TODO: char *SourceStr
-
   fputs("<PicocParse>\n", stdout);
   PicocPlatformScanFile(filename);
   // PicocParse("nofile", SourceStr, strlen(SourceStr), TRUE, TRUE, FALSE);

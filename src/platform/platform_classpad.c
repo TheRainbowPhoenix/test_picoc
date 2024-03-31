@@ -140,8 +140,6 @@ void PicocPlatformScanFile(const char *filename) {
 
     // char* asrc = "#include <stdio.h>\nprintf(\"Hello world\\n\");\nint Count;\nfor (Count = -5; Count <= 5; Count++)\nprintf(\"Count = %d\\n\", Count);\nvoid main() {}\n\0";
 
-    // TODO: open and check the file
-    // unsigned int filesize = strlen(asrc);
     // TODO: check enough stack
     // if(0x881E0000 - (int)GetStackPtr() < 500000 - filesize*sizeof(unsigned char) - 30000) {
 //    asrc = (char*)alloca(filesize*sizeof(unsigned char)+5);

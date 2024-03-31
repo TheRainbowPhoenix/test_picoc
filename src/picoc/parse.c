@@ -845,7 +845,7 @@ void PicocParse(const char *FileName, const char *Source, int SourceLen, int Run
 
     do {
         Ok = ParseStatement(&Parser, TRUE);
-        fprintf(stdout, "line:%d\n", Parser.Line); // TODO: debug removeme
+        // fprintf(stdout, "line:%d\n", Parser.Line); // TODO: debug removeme
     } while (Ok == ParseResultOk);
 
     if (Ok == ParseResultError) {
